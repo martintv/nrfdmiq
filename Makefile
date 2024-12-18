@@ -40,9 +40,9 @@ else
 
 endif
 
-sid_refl = 685097948
-#sid_init = 685751234
-sid_init = 685701409
+sid_refl = 960196037
+#sid_init = 960196037
+sid_init = 682972640
 
 current_dir = $(shell pwd)
 
@@ -50,17 +50,11 @@ nrfjprog = nrfjprog.exe
 
 ifeq ($(OSFLAG),win)
 	pycmd = /usr/bin/python3
-	#sid_refl = 685649956
-	#sid_init = 685965072
-	sid_init = 685369056
-	sid_refl = 685868684
-
-
 else
 ifeq ($(OSFLAG),linux)
 
 
-	nrfjprog = nrfjprog.exe
+	nrfjprog = nrfjprog
 	pycmd = python3
 else
 	nrfjprog = nrfjprog
@@ -68,8 +62,8 @@ endif
 endif
 
 first:
-	cd reflector; west build -b nrf52833dk_nrf52833 -- -DCONF_FILE=prj.conf
-	cd initiator; west build -b nrf52833dk_nrf52833 -- -DCONF_FILE=prj.conf
+	cd reflector; west build -b nrf5340dk_nrf5340_cpunet -- -DCONF_FILE=prj.conf
+	cd initiator; west build -b nrf52dk_nrf52832 -- -DCONF_FILE=prj.conf
 
 flashr:
 	cd reflector; west flash -i ${sid_refl}

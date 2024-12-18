@@ -31,7 +31,11 @@
 #include <nrf.h>
 #include <nrfx.h>
 #include "nrf_dm.h"
+#if defined(NRF5340_XXAA_NETWORK)
+#include <nrfx_dppi.h>
+#else
 #include <nrfx_ppi.h>
+#endif
 #include "nrfx_config.h"
 #include "nrfx_clock.h"
 

@@ -38,13 +38,13 @@
 void debug_init(){
 
   // Configure GPIO pin as output with standard drive strength.
-  NRF_GPIO->PIN_CNF[DBGPIN_2] =
+  NRF_P0->PIN_CNF[DBGPIN_2] =
     (GPIO_PIN_CNF_DIR_Output << GPIO_PIN_CNF_DIR_Pos) | (GPIO_PIN_CNF_DRIVE_S0S1 << GPIO_PIN_CNF_DRIVE_Pos)
     | (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos) | (GPIO_PIN_CNF_PULL_Disabled << GPIO_PIN_CNF_PULL_Pos)
     | (GPIO_PIN_CNF_SENSE_Disabled << GPIO_PIN_CNF_SENSE_Pos);
 
   // Configure GPIO pin as output with standard drive strength.
-  NRF_GPIO->PIN_CNF[DBGPIN_1] =
+  NRF_P0->PIN_CNF[DBGPIN_1] =
     (GPIO_PIN_CNF_DIR_Output << GPIO_PIN_CNF_DIR_Pos) | (GPIO_PIN_CNF_DRIVE_S0S1 << GPIO_PIN_CNF_DRIVE_Pos)
     | (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos) | (GPIO_PIN_CNF_PULL_Disabled << GPIO_PIN_CNF_PULL_Pos)
       | (GPIO_PIN_CNF_SENSE_Disabled << GPIO_PIN_CNF_SENSE_Pos);
@@ -61,14 +61,14 @@ void debug_init(){
 static void debug_set(uint32_t pin)
 {
 
-  NRF_GPIO->OUTSET = 0x1 << pin;
+  NRF_P0->OUTSET = 0x1 << pin;
 
 }
 
 static void debug_clear(uint32_t pin)
 {
 
-  NRF_GPIO->OUTCLR = 0x1 << pin;
+  NRF_P0->OUTCLR = 0x1 << pin;
 
 }
 
